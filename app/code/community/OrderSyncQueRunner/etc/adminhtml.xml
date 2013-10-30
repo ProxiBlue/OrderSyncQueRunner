@@ -1,0 +1,32 @@
+<config>
+    <menu>
+        <sales>
+            <children>
+                <ordersyncquerunner module="ordersyncquerunner">
+                    <title>Sync Que Manager</title>
+                    <sort_order>1000</sort_order>
+                    <action>adminhtml/que</action>
+                </ordersyncquerunner>
+            </children>
+        </sales>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <ordersyncquemanager>
+                                        <title>Sync Que Manager</title>
+                                    </ordersyncquemanager>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
