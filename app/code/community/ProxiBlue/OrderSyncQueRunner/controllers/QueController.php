@@ -54,4 +54,14 @@ class ProxiBlue_OrderSyncQueRunner_QueController
             ->renderLayout();
     }
 
+    public function gridAction()
+    {
+        $this->loadLayout();
+        $this->getResponse()->setBody(
+            $this->getLayout()
+                ->createBlock('ordersyncquerunner/adminhtml_que_grid')
+                ->toHtml()
+        );
+    }
+
 }
