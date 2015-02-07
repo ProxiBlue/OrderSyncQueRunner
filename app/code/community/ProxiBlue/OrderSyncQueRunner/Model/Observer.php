@@ -23,16 +23,20 @@ class ProxiBlue_OrderSyncQueRunner_Model_Observer
         $order = $observer->getEvent()->getOrder();
         try {
             $syncModel = Mage::getModel('ordersyncquerunner/que');
-            $data = array('increment_id'=>$order->getIncrementId(),
-                          'entity_id'=>$order->getId(),
-                          'created_at'=> now(),
-                );
+            $data = array(
+                'increment_id'=>$order->getIncrementId(),
+                'entity_id'=>$order->getId(),
+                'created_at'=> now(),
+            );
             $syncModel->setData($data);
             $syncModel->save();
         } catch (Exception $e) {
             Mage::log('could not place order into sync que !' . $e->getMessage());
             // attempt to sync right now.
-            Mage::dispatchEvent('sales_order_place_after_que', array('order'=>$order));
+            Mage::dispatchEvent(
+                'sales_order_place_after_que',
+                array('order'=>$order)
+            );
         }
         return $this;
     }
