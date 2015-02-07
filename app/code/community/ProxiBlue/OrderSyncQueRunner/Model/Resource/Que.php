@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  *
  * @category   ProxiBlue
  * @package    ProxiBlue_OrderSyncQueRunner
@@ -9,7 +9,8 @@
  */
 
 
-class ProxiBlue_OrderSyncQueRunner_Model_Resource_Que extends Mage_Core_Model_Mysql4_Abstract
+class ProxiBlue_OrderSyncQueRunner_Model_Resource_Que
+    extends Mage_Core_Model_Mysql4_Abstract
 {
     protected function _construct()
     {

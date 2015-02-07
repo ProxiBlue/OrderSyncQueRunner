@@ -7,7 +7,9 @@
  * @package    ProxiBlue_OrderSyncQueRunner
  * @author     Lucas van Staden (support@proxiblue.com.au)
  */
-class ProxiBlue_OrderSyncQueRunner_Block_Adminhtml_Que_Grid extends Mage_Adminhtml_Block_Widget_Grid {
+class ProxiBlue_OrderSyncQueRunner_Block_Adminhtml_Que_Grid
+    extends Mage_Adminhtml_Block_Widget_Grid
+{
 
     public function __construct() {
         parent::__construct();
@@ -57,7 +59,7 @@ class ProxiBlue_OrderSyncQueRunner_Block_Adminhtml_Que_Grid extends Mage_Adminht
             'index' => 'created_at',
             'gmtoffset' => false
         ));
-        
+
         $this->addColumn('synced_at', array(
             'header' => Mage::helper('customer')->__('Synced at'),
             'type' => 'datetime',
