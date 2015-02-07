@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  *
  * @category   ProxiBlue
  * @package    ProxiBlue_OrderSyncQueRunner
@@ -12,12 +12,12 @@ class ProxiBlue_OrderSyncQueRunner_Model_Observer {
 
     /**
      * Event to save order to que
-     * 
+     *
      * @param Varien_Event_Observer $observer
      * @return ProxiBlue_OrderSyncQueRunner_Model_Observer
      */
     public function sales_order_place_after($observer) {
-        
+
         $order = $observer->getEvent()->getOrder();
         try {
             $syncModel = mage::getModel('ordersyncquerunner/que');

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  *
  * @category   ProxiBlue
  * @package    ProxiBlue_OrderSyncQueRunner

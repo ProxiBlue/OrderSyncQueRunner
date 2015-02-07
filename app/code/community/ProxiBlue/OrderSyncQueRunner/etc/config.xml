@@ -23,7 +23,7 @@
             </ordersyncquerunner>
             <ordersyncquerunner_resource>
                 <class>ProxiBlue_OrderSyncQueRunner_Model_Resource</class>
-                <entities>		  
+                <entities>
                     <que>
                         <table>ordersyncquerunner_que</table>
                     </que>
@@ -79,7 +79,7 @@
                     <modules>
                         <ProxiBlue_OrderSyncQueRunner after="Mage_Adminhtml">ProxiBlue_OrderSyncQueRunner</ProxiBlue_OrderSyncQueRunner>
                     </modules>
-                </args>   
+                </args>
             </adminhtml>
         </routers>
     </admin>

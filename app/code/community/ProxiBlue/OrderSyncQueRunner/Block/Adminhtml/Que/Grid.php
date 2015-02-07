@@ -57,7 +57,7 @@ class ProxiBlue_OrderSyncQueRunner_Block_Adminhtml_Que_Grid extends Mage_Adminht
             'index' => 'created_at',
             'gmtoffset' => false
         ));
-        
+
         $this->addColumn('synced_at', array(
             'header' => Mage::helper('customer')->__('Synced at'),
             'type' => 'datetime',

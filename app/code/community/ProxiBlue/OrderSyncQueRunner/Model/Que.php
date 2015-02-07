@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  *
  * @category   ProxiBlue
  * @package    ProxiBlue_OrderSyncQueRunner
@@ -12,11 +12,11 @@ class ProxiBlue_OrderSyncQueRunner_Model_Que extends Mage_Core_Model_Abstract
     protected function _construct(){
        $this->_init("ordersyncquerunner/que");
     }
-   
+
     /**
      * Handle sync of data
      * Dispatches new event to efect sync
-     * 
+     *
      * @param type $syncModel
      */
     static public function doSync($syncModel) {
@@ -35,4 +35,3 @@ class ProxiBlue_OrderSyncQueRunner_Model_Que extends Mage_Core_Model_Abstract
     }
 
 }
-	 
