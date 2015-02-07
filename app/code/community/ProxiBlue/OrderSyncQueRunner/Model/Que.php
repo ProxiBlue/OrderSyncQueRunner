@@ -20,15 +20,24 @@ class ProxiBlue_OrderSyncQueRunner_Model_Que extends Mage_Core_Model_Abstract
      * @param type $syncModel
      */
     static public function doSync($syncModel) {
-        foreach ($syncModel as $key => $sync) {
-            $order = mage::getModel('sales/order')->load($sync->getEntityId());
+        $helper = Mage::helper('ordersyncquerunner');
+        foreach ($syncModel as $sync) {
+            $order = Mage::getModel('sales/order')->load($sync->getEntityId());
             try {
-                Mage::dispatchEvent('sales_order_place_after_que', array('order' => $order));
-                $order->addStatusHistoryComment(mage::helper('ordersyncquerunner')->__('Order Synced'));
-                $sync->setSyncedAt(now());
-                $sync->save();
+                Mage::dispatchEvent(
+                    'sales_order_place_after_que',
+                    array('order' => $order)
+                );
+                $order->addStatusHistoryComment(
+                    $helper->__('Order Synced')
+                );
+                $sync->setSyncedAt(now())->save();
             } catch (Exception $e) {
-                $order->addStatusToHistory($order->getStatus(), 'Order failed sync: ' . $e->getMessage(), false);
+                $order->addStatusToHistory(
+                    $order->getStatus(),
+                    $helper->__('Order failed sync: %s', $e->getMessage()),
+                    false
+                );
             }
             $order->save();
         }
