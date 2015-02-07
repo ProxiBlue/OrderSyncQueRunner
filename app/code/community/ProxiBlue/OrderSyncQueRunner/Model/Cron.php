@@ -11,7 +11,7 @@ class ProxiBlue_OrderSyncQueRunner_Model_Cron {
 
     /**
      * Sync via cron schedule
-     * 
+     *
      * @param object $schedule
      * @return mixed
      */
@@ -30,7 +30,7 @@ class ProxiBlue_OrderSyncQueRunner_Model_Cron {
 
     /**
      * Clean old records on schedule
-     * 
+     *
      * @param object $schedule
      * @return mixed
      */
@@ -38,7 +38,7 @@ class ProxiBlue_OrderSyncQueRunner_Model_Cron {
         try {
           $syncModel = mage::getModel('ordersyncquerunner/que')->getCollection()
                     ->addFieldToFilter('created_at', array('lteq' => $schedule->getExecutedAt()))
-                    ->addFieldToFilter('synced_at', array('notnull' => true));                    
+                    ->addFieldToFilter('synced_at', array('notnull' => true));
            foreach ($syncModel as $key => $sync) {
                $sync->delete();
            }
@@ -50,6 +50,6 @@ class ProxiBlue_OrderSyncQueRunner_Model_Cron {
         }
     }
 
-    
+
 
 }
