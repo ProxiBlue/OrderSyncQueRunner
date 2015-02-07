@@ -8,7 +8,8 @@
  * @author     Lucas van Staden (support@proxiblue.com.au)
  */
 
-class ProxiBlue_OrderSyncQueRunner_Model_Observer {
+class ProxiBlue_OrderSyncQueRunner_Model_Observer
+{
 
     /**
      * Event to save order to que
@@ -16,11 +17,12 @@ class ProxiBlue_OrderSyncQueRunner_Model_Observer {
      * @param Varien_Event_Observer $observer
      * @return ProxiBlue_OrderSyncQueRunner_Model_Observer
      */
-    public function sales_order_place_after($observer) {
+    public function sales_order_place_after(Varien_Event_Observer $observer)
+    {
 
         $order = $observer->getEvent()->getOrder();
         try {
-            $syncModel = mage::getModel('ordersyncquerunner/que');
+            $syncModel = Mage::getModel('ordersyncquerunner/que');
             $data = array('increment_id'=>$order->getIncrementId(),
                           'entity_id'=>$order->getId(),
                           'created_at'=> now(),
@@ -28,7 +30,7 @@ class ProxiBlue_OrderSyncQueRunner_Model_Observer {
             $syncModel->setData($data);
             $syncModel->save();
         } catch (Exception $e) {
-            mage::log('could not place order into sync que !' . $e->getMessage());
+            Mage::log('could not place order into sync que !' . $e->getMessage());
             // attempt to sync right now.
             Mage::dispatchEvent('sales_order_place_after_que', array('order'=>$order));
         }
