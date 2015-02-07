@@ -15,7 +15,7 @@ class ProxiBlue_OrderSyncQueRunner_Block_Adminhtml_Que
         $this->_controller = "adminhtml_que";
         $this->_blockGroup = "ordersyncquerunner";
         $this->_headerText = Mage::helper("ordersyncquerunner")
-            ->__("Order Sync Que Manager");
+            ->__("Order Sync Queue Manager");
         parent::__construct();
         $this->_removeButton('add');
     }

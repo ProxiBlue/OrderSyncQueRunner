@@ -1,14 +1,16 @@
 <?php
 
 /**
- * 
+ *
  *
  * @category   ProxiBlue
  * @package    ProxiBlue_OrderSyncQueRunner
  * @author     Lucas van Staden (support@proxiblue.com.au)
  */
 
-class ProxiBlue_OrderSyncQueRunner_QueController extends Mage_Adminhtml_Controller_Action {
+class ProxiBlue_OrderSyncQueRunner_QueController
+    extends Mage_Adminhtml_Controller_Action
+{
 
     /**
      * Initialize the controller
@@ -16,7 +18,7 @@ class ProxiBlue_OrderSyncQueRunner_QueController extends Mage_Adminhtml_Controll
      */
     protected function _initAction() {
         $this->loadLayout()
-                ->_setActiveMenu('sale/ordersyncquerunner');
+            ->_setActiveMenu('sale/ordersyncquerunner');
         return $this;
     }
 
@@ -36,11 +38,20 @@ class ProxiBlue_OrderSyncQueRunner_QueController extends Mage_Adminhtml_Controll
      */
     public function reportAction() {
 
-        $block = $this->getLayout()->createBlock('ordersyncquerunner/adminhtml_que', 'ordersyncquerunner.adminhtml.que.grid');
+        $block = $this
+            ->getLayout()
+            ->createBlock(
+                'ordersyncquerunner/adminhtml_que',
+                'ordersyncquerunner.adminhtml.que.grid'
+            );
+
         $this->_initAction()
-                ->_addBreadcrumb(Mage::helper('adminhtml')->__('Sales'), Mage::helper('adminhtml')->__('Que Manage'))
-                ->_addContent($block)
-                ->renderLayout();
+            ->_addBreadcrumb(
+                Mage::helper('adminhtml')->__('Sales'),
+                Mage::helper('adminhtml')->__('Queue Manage')
+            )
+            ->_addContent($block)
+            ->renderLayout();
     }
 
 }
