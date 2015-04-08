@@ -23,7 +23,6 @@ class ProxiBlue_OrderSyncQueRunner_Model_Cron
                 ->getCollection()
                 ->addFieldToFilter('synced_at', array('null' => true));
             ProxiBlue_OrderSyncQueRunner_Model_Que::doSync($syncModel);
-            return $this;
         } catch (Exception $e) {
             // save any errors.
             Mage::logException($e);
@@ -49,7 +48,6 @@ class ProxiBlue_OrderSyncQueRunner_Model_Cron
             foreach ($syncModel as $key => $sync) {
                $sync->delete();
             }
-           return $this;
         } catch (Exception $e) {
             // save any errors.
             Mage::logException($e);
