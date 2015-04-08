@@ -14,7 +14,7 @@ class ProxiBlue_OrderSyncQueRunner_Model_Cron
      * Sync via cron schedule
      *
      * @param object $schedule
-     * @return mixed
+     * @return void
      */
     public static function sync($schedule)
     {
@@ -34,7 +34,7 @@ class ProxiBlue_OrderSyncQueRunner_Model_Cron
      * Clean old records on schedule
      *
      * @param object $schedule
-     * @return mixed
+     * @return void
      */
     public static function clean($schedule)
     {
