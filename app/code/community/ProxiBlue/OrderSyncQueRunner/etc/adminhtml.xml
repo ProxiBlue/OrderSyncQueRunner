@@ -18,9 +18,9 @@
                         <children>
                             <config>
                                 <children>
-                                    <ordersyncquemanager>
-                                        <title>Sync Queue Manager</title>
-                                    </ordersyncquemanager>
+                                    <ordersyncquerunner>
+                                        <title>Order Sync Queue Manager</title>
+                                    </ordersyncquerunner>
                                 </children>
                             </config>
                         </children>

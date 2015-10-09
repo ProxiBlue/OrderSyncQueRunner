@@ -14,16 +14,15 @@ class ProxiBlue_OrderSyncQueRunner_Model_Cron
      * Sync via cron schedule
      *
      * @param object $schedule
-     * @return mixed
+     * @return void
      */
     public static function sync($schedule)
     {
         try {
-            $syncModel = Mage::getModel('ordersyncquerunner/que')
+            $queueCollection = Mage::getModel('ordersyncquerunner/que')
                 ->getCollection()
                 ->addFieldToFilter('synced_at', array('null' => true));
-            ProxiBlue_OrderSyncQueRunner_Model_Que::doSync($syncModel);
-            return $this;
+            ProxiBlue_OrderSyncQueRunner_Model_Que::doSync($queueCollection);
         } catch (Exception $e) {
             // save any errors.
             Mage::logException($e);
@@ -35,7 +34,7 @@ class ProxiBlue_OrderSyncQueRunner_Model_Cron
      * Clean old records on schedule
      *
      * @param object $schedule
-     * @return mixed
+     * @return void
      */
     public static function clean($schedule)
     {
@@ -49,14 +48,11 @@ class ProxiBlue_OrderSyncQueRunner_Model_Cron
             foreach ($syncModel as $key => $sync) {
                $sync->delete();
             }
-           return $this;
         } catch (Exception $e) {
             // save any errors.
             Mage::logException($e);
             return $e->getMessage();
         }
     }
-
-
 
 }

@@ -19,7 +19,6 @@ class ProxiBlue_OrderSyncQueRunner_Model_Observer
      */
     public function sales_order_place_after(Varien_Event_Observer $observer)
     {
-
         $order = $observer->getEvent()->getOrder();
         try {
             $syncModel = Mage::getModel('ordersyncquerunner/que');
@@ -31,12 +30,16 @@ class ProxiBlue_OrderSyncQueRunner_Model_Observer
             $syncModel->setData($data);
             $syncModel->save();
         } catch (Exception $e) {
-            Mage::log('could not place order into sync que !' . $e->getMessage());
-            // attempt to sync right now.
-            Mage::dispatchEvent(
-                'sales_order_place_after_que',
-                array('order'=>$order)
-            );
+            Mage::log("Couldn't place order into sync queue! " . $e->getMessage());
+
+            // Attempt to sync right now if sync isn't paused
+            if (!Mage::helper('ordersyncquerunner')->isSyncPaused()) {
+                Mage::dispatchEvent(
+                    'sales_order_place_after_que',
+                    array('order' => $order)
+                );
+            }
+
         }
         return $this;
     }
