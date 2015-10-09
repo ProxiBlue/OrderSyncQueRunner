@@ -38,6 +38,13 @@ There is a new menu option under 'Oders' whuch allows you to view the sync statu
 There is a weekly cron that cleans the table of all synced orders, thus preventing it from getting to large.
 
 
+Our Premium extensions:
+----------------------
+[Magento Free Gift Promotions](http://www.proxiblue.com.au/magento-gift-promotions.html "Magento Free Gift Promotions")
+The ultimate magento gift promotions module - clean code, and it just works!
+
+[Magento Dynamic Category Products](http://www.proxiblue.com.au/magento-dynamic-category-products.html "Magento Dynamic Category Products")
+Automate Category Product associations - assign any product to a category, using various rules.
 
 
  
