@@ -1,7 +1,7 @@
 <?php
 
 /**
- *
+ * Queue model
  *
  * @category   ProxiBlue
  * @package    ProxiBlue_OrderSyncQueRunner
@@ -9,18 +9,27 @@
  */
 class ProxiBlue_OrderSyncQueRunner_Model_Que extends Mage_Core_Model_Abstract
 {
-    protected function _construct(){
+
+    protected function _construct()
+    {
        $this->_init("ordersyncquerunner/que");
     }
 
     /**
      * Handle sync of data
-     * Dispatches new event to efect sync
+     * Dispatches new event to effect sync
      *
-     * @param type $syncModel
+     * @param ProxiBlue_OrderSyncQueRunner_Model_Resource_Que_Collection $syncModel
      */
-    static public function doSync($syncModel) {
+    static public function doSync(
+        ProxiBlue_OrderSyncQueRunner_Model_Resource_Que_Collection $syncModel
+    ) {
         $helper = Mage::helper('ordersyncquerunner');
+
+        if ($helper->isSyncPaused()) {
+            return;
+        }
+
         foreach ($syncModel as $sync) {
             $order = Mage::getModel('sales/order')->load($sync->getEntityId());
             try {

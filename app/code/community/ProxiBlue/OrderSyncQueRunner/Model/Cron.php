@@ -19,10 +19,10 @@ class ProxiBlue_OrderSyncQueRunner_Model_Cron
     public static function sync($schedule)
     {
         try {
-            $syncModel = Mage::getModel('ordersyncquerunner/que')
+            $queueCollection = Mage::getModel('ordersyncquerunner/que')
                 ->getCollection()
                 ->addFieldToFilter('synced_at', array('null' => true));
-            ProxiBlue_OrderSyncQueRunner_Model_Que::doSync($syncModel);
+            ProxiBlue_OrderSyncQueRunner_Model_Que::doSync($queueCollection);
         } catch (Exception $e) {
             // save any errors.
             Mage::logException($e);
@@ -54,7 +54,5 @@ class ProxiBlue_OrderSyncQueRunner_Model_Cron
             return $e->getMessage();
         }
     }
-
-
 
 }

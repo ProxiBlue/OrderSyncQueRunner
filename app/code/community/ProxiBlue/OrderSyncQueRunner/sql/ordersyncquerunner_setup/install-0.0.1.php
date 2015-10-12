@@ -26,6 +26,7 @@ $table = $installer->getConnection()
     ->addColumn('synced_at', Varien_Db_Ddl_Table::TYPE_DATETIME, null, array(
         'unsigned'  => true,
         'nullable'  => true,
-        ), 'Synced') ;
+        ), 'Synced');
+
 $installer->getConnection()->createTable($table);
 $installer->endSetup();
