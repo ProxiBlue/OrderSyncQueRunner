@@ -39,7 +39,7 @@ class ProxiBlue_OrderSyncQueRunner_Block_Adminhtml_Que_Grid
             "header" => Mage::helper("ordersyncquerunner")->__("Order ID"),
             "align" => "right",
             "width" => "50px",
-            "type" => "number",
+            "type" => "text",
             "index" => "increment_id",
         ));
 

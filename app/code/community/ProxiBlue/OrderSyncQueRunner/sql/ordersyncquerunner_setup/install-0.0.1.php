@@ -11,8 +11,7 @@ $table = $installer->getConnection()
         'nullable'  => false,
         'primary'   => true,
         ), 'Id')
-    ->addColumn('increment_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
-        'unsigned'  => true,
+    ->addColumn('increment_id', Varien_Db_Ddl_Table::TYPE_TEXT, 50, array(
         'nullable'  => true,
         ), 'Order Increment Id')
     ->addColumn('entity_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
