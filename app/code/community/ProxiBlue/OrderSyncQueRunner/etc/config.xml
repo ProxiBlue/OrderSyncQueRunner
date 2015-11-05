@@ -2,7 +2,7 @@
 <config>
     <modules>
         <ProxiBlue_OrderSyncQueRunner>
-            <version>0.1.0</version>
+            <version>0.1.1</version>
         </ProxiBlue_OrderSyncQueRunner>
     </modules>
     <global>
