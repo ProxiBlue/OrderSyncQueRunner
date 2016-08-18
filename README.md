@@ -33,7 +33,7 @@ Any module (or observer) that used to listen to sales_order_place_after can be a
 The que event is identical to the original sales_order_place_after event.
 
 Nothing fancy, and no manual sync buttons (yet)
-It will retry any orders that are mot marked as synced, or until they are marked as synced.
+It will retry any orders that are not marked as synced, or until they are marked as synced.
 There is a new menu option under 'Orders' which allows you to view the sync status.
 There is a weekly cron that cleans the table of all synced orders, thus preventing it from getting to large.
 
