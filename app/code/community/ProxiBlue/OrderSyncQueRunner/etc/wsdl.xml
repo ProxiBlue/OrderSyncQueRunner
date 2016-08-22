@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:typens="urn:{{var wsdl.name}}" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Magento">
+            <import namespace="http://schemas.xmlsoap.org/soap/encoding/"
+                    schemaLocation="http://schemas.xmlsoap.org/soap/encoding/"/>
+            <complexType name="orderSyncQueRunnerEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:orderSyncQueRunnerEntity[]"/>
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="orderSyncQueRunnerEntity">
+                <all>
+                    <element name="id" type="xsd:int" minOccurs="0"/>
+                    <element name="created_at" type="xsd:string" minOccurs="0"/>
+                    <element name="synced_at" type="xsd:string" minOccurs="0"/>
+                    <element name="increment_id" type="xsd:string" minOccurs="0"/>
+                    <element name="entity_id" type="xsd:int" minOccurs="0"/>
+                    <element name="is_new_order" type="xsd:int" minOccurs="0"/>
+                </all>
+            </complexType>
+        </schema>
+    </types>
+    <message name="orderSyncQueRunnerListRequest">
+        <part name="sessionId" type="xsd:string"/>
+    </message>
+    <message name="orderSyncQueRunnerListResponse">
+        <part name="result" type="typens:orderSyncQueRunnerEntityArray"/>
+    </message>
+    <portType>
+        <operation name="orderSyncQueRunnerList">
+            <documentation>List New Orders from Que</documentation>
+            <input message="typens:orderSyncQueRunnerListRequest"/>
+            <output message="typens:orderSyncQueRunnerListResponse"/>
+        </operation>
+    </portType>
+    <message name="orderSyncQueRunnerUpdateRequest">
+        <part name="sessionId" type="xsd:string"/>
+        <part name="syncData" type="typens:orderSyncQueRunnerEntity"/>
+    </message>
+    <message name="orderSyncQueRunnerUpdateResponse">
+        <part name="result" type="xsd:boolean"/>
+    </message>
+    <portType>
+        <operation name="orderSyncQueRunnerUpdate">
+            <documentation>Update Order Sync Que Runner</documentation>
+            <input message="typens:orderSyncQueRunnerUpdateRequest"/>
+            <output message="typens:orderSyncQueRunnerUpdateResponse"/>
+        </operation>
+    </portType>
+    <binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="orderSyncQueRunnerList">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="orderSyncQueRunnerUpdate">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+    </binding>
+    <service name="{{var wsdl.name}}Service">
+        <port name="{{var wsdl.handler}}Port" binding="typens:{{var wsdl.handler}}Binding">
+            <soap:address location="{{var wsdl.url}}"/>
+        </port>
+    </service>
+</definitions>

@@ -1,0 +1,6 @@
+<?php
+
+class ProxiBlue_OrderSyncQueRunner_Model_Resource_Que_Api extends ProxiBlue_OrderSyncQueRunner_Model_Resource_Que_Api_V2
+{
+
+}

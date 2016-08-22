@@ -3,6 +3,12 @@
 /**
  * Queue model
  *
+ * @method int      getIncrementId()
+ * @method int      getEntityId()
+ * @method string   getCreatedAt()
+ * @method string   getSyncedAt()
+ * @method int      getIsNewOrder()
+ *
  * @category   ProxiBlue
  * @package    ProxiBlue_OrderSyncQueRunner
  * @author     Lucas van Staden (support@proxiblue.com.au)
