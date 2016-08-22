@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config>
+    <api>
+        <resources>
+            <order_sync_que_runner translate="title" module="ordersyncquerunner">
+                <model>ordersyncquerunner_resource/que_api</model>
+                <title>Order Sync Que Runner</title>
+                <acl>order_sync_que_runner</acl>
+                <methods>
+                    <list translate="title" module="ordersyncquerunner">
+                        <title>List New Order Increment Ids</title>
+                        <method>listNewOrdersQue</method>
+                    </list>
+                    <update translate="title" module="ordersyncquerunner">
+                        <title>Update Order</title>
+                        <method>UpdateOrdersQue</method>
+                    </update>
+                </methods>
+            </order_sync_que_runner>
+        </resources>
+        <resources_alias>
+            <order_sync_que_runner>order_sync_que_runner</order_sync_que_runner>
+        </resources_alias>
+        <v2>
+            <resources_function_prefix>
+                <order_sync_que_runner>orderSyncQueRunner</order_sync_que_runner>
+            </resources_function_prefix>
+        </v2>
+        <acl>
+            <resources>
+                <order_sync_que_runner translate="title" module="ordersyncquerunner">
+                    <title>Order Sync Que Runner Api</title>
+                    <sort_order>5</sort_order>
+                </order_sync_que_runner>
+            </resources>
+        </acl>
+    </api>
+</config>
