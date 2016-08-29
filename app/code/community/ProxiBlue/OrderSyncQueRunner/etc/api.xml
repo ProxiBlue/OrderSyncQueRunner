@@ -16,6 +16,12 @@
                         <method>UpdateOrdersQue</method>
                     </update>
                 </methods>
+                <faults module="ordersyncquerunner">
+                    <data_invalid>
+                        <code>100</code >
+                        <message>Invalid api data. Details in error message.</message>
+                    </data_invalid>
+                </faults>
             </order_sync_que_runner>
         </resources>
         <resources_alias>
